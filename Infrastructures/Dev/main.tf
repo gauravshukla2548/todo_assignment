@@ -1,5 +1,5 @@
 module "rg_nike" {
-  source     = "../../modules/azurerm_resource_group"
+  source     = "../modules/azurerm_resource_group"
   rg_details = var.rg_details
 
 }
@@ -7,25 +7,25 @@ module "rg_nike" {
 
 module "networks" {
   depends_on = [module.rg_nike]
-  source     = "../../modules/azurerm_virtual_network"
+  source     = "../modules/azurerm_virtual_network"
   networks   = var.networks
 }
 
 
 
 module "pip" {
-  source = "../../modules/azurerm_public_ip"
+  source = "../modules/azurerm_public_ip"
   pip    = var.pip
 }
 
 module "subnet_p" {
-  source     = "../../modules/azurerm_subnet"
+  source     = "../modules/azurerm_subnet"
   subnets    = var.subnets
   depends_on = [module.networks]
 }
 
 module "nic" {
-  source = "../../modules/azurerm_network_interface"
+  source = "../modules/azurerm_network_interface"
   nic = {
     for nic_key, nic_val in var.nic : nic_key => merge(nic_val, {
       ip_configuration = {
@@ -42,7 +42,7 @@ module "nic" {
 
 
 module "vm" {
-  source = "../../modules/azurerm_virtual_machine"
+  source = "../modules/azurerm_virtual_machine"
   vms = {
     for k, v in var.vms : k => merge(v, {
       network_interface_id = module.nic.network_interface_ids[v.network_interface_id]
@@ -54,7 +54,7 @@ module "vm" {
 
 
 module "hike_acr" {
-  source     = "../../modules/azurerm_container_registory "
+  source     = "../modules/azurerm_container_registory "
   acrs       = var.acrs
   depends_on = [module.rg_nike]
 
@@ -62,7 +62,7 @@ module "hike_acr" {
 }
 
 module "hike_database" {
-  source     = "../../modules/azurerm_database"
+  source     = "../modules/azurerm_database"
   datas      = var.datas
   depends_on = [module.rg_nike, module.hike_dataser]
 
@@ -70,7 +70,7 @@ module "hike_database" {
 }
 
 module "hike_dataser" {
-  source     = "../../modules/azurerm_database_server "
+  source     = "../modules/azurerm_database_server "
   sqlser     = var.sqlser
   depends_on = [module.rg_nike]
 
@@ -79,7 +79,7 @@ module "hike_dataser" {
 
 
 module "hike_key_vault" {
-  source     = "../../modules/azurerm_key_vault "
+  source     = "../modules/azurerm_key_vault "
   kvs        = var.kvs
   depends_on = [module.rg_nike]
 
@@ -88,7 +88,7 @@ module "hike_key_vault" {
 
 
 module "hike_aks" {
-  source = "../../modules/azurerm_kubernetes_service "
+  source = "../modules/azurerm_kubernetes_service "
   aks    = var.aks
 
   depends_on = [module.rg_nike]
