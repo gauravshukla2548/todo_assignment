@@ -1,0 +1,38 @@
+trigger:
+ branches:
+   -main
+   -feature
+pr:
+   -main
+   -feature
+
+
+
+parameters:
+  - type: object
+    displayName: env
+    default:dev
+    values:
+      - dev
+      - qa
+      - prod
+
+stages:
+  - stage: 
+    displayName: terraform init and plan 
+    jobs:
+      - job: 
+        steps:
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: 'latest'
+ 
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)Infrastructures /Dev'
+            backendServiceArm: 'first'
+            backendAzureRmStorageAccountName: 'backacc123322121'
+            backendAzureRmContainerName: 'backend'
+            backendAzureRmKey: 'terraform.tfstate'
