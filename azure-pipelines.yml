@@ -55,7 +55,7 @@ stages:
             command: init
             workingDirectory: $(workdir)
             backendServiceArm: first
-            # backendAzureRmResourceGroupName: rg-tfstate
+            backendAzureRmResourceGroupName: back_rg
             backendAzureRmStorageAccountName: backacc123322121
             backendAzureRmContainerName: backend
             backendAzureRmKey: terraform.tfstate
