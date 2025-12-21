@@ -10,6 +10,11 @@ trigger: none
 #       - qa
 #       - prod
 
+
+pool:
+ name: todoagent
+
+
 stages:
   - stage: 
     displayName: terraform init and plan 
@@ -20,12 +25,12 @@ stages:
           inputs:
             terraformVersion: 'latest'
  
-        # - task: TerraformTask@5
-        #   inputs:
-        #     provider: 'azurerm'
-        #     command: 'init'
-        #     workingDirectory: '$(System.DefaultWorkingDirectory)Infrastructures /Dev'
-        #     backendServiceArm: 'first'
-        #     backendAzureRmStorageAccountName: 'backacc123322121'
-        #     backendAzureRmContainerName: 'backend'
-        #     backendAzureRmKey: 'terraform.tfstate'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)Infrastructures /Dev'
+            backendServiceArm: 'first'
+            backendAzureRmStorageAccountName: 'backacc123322121'
+            backendAzureRmContainerName: 'backend'
+            backendAzureRmKey: 'terraform.tfstate'
