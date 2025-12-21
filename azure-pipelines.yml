@@ -29,7 +29,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'init'
-            workingDirectory: '$(System.DefaultWorkingDirectory)Infrastructures /Dev'
+            workingDirectory: '$(Build.SourcesDirectory)/Infrastructures/Dev'
             backendServiceArm: 'first'
             backendAzureRmStorageAccountName: 'backacc123322121'
             backendAzureRmContainerName: 'backend'
