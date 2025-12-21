@@ -1,21 +1,14 @@
-trigger:
- branches:
-   -main
-   -feature
-pr:
-   -main
-   -feature
+trigger: none
 
 
-
-parameters:
-  - type: object
-    displayName: env
-    default:dev
-    values:
-      - dev
-      - qa
-      - prod
+# parameters:
+#   - type: object
+#     displayName: env
+#     default:dev
+#     values:
+#       - dev
+#       - qa
+#       - prod
 
 stages:
   - stage: 
