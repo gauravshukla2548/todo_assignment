@@ -41,12 +41,7 @@ stages:
             command: 'plan'
             workingDirectory: $(workdir)
             environmentServiceNameAzureRM: 'first'
-  - stage: 
-    displayName: infracost 
-    jobs:
-      - job: 
-        steps:
-        
+
 
   - stage:
     displayName: apply 
