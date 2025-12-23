@@ -45,7 +45,10 @@ stages:
           inputs:
             apiKey: 'ico-sj5sb7et5w5AdnGeq2oQkyfGf6ONoUpb'
             version: '0.10.x'
-            pricingApiEndpoint: 'https://prices.azure.com/api/retail/prices'
+        - script: infracost breakdown --path .
+          displayName: "Infracost Breakdown"
+          env:
+            INFRACOST_LOG_LEVEL: debug
 
 
   - stage:
