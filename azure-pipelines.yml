@@ -41,6 +41,11 @@ stages:
             command: 'plan'
             workingDirectory: $(workdir)
             environmentServiceNameAzureRM: 'first'
+        - task: InfracostSetup@2
+          inputs:
+            apiKey: 'ico-sj5sb7et5w5AdnGeq2oQkyfGf6ONoUpb'
+            version: '0.10.x'
+            pricingApiEndpoint: 'https://prices.azure.com/api/retail/prices'
 
 
   - stage:
