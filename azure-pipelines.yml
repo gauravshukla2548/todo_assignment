@@ -45,7 +45,7 @@ stages:
           inputs:
             apiKey: 'ico-sj5sb7et5w5AdnGeq2oQkyfGf6ONoUpb'
             version: '0.10.x'
-        - script: infracost breakdown --path Infrastructures/Dev
+        - script: infracost breakdown --path Infrastructures/Dev/terraform.tfvars
           displayName: "Infracost Breakdown"
           env:
             INFRACOST_LOG_LEVEL: debug
