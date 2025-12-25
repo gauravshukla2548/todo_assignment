@@ -48,10 +48,12 @@ stages:
             pricingApiEndpoint: 'https://prices.azure.com/api/retail/prices'
         - script: |
             terraform init
-          displayName: Terraform Init
+            terraform plan -out tfplan.binary
+            terraform show -json tfplan.binary > tfplan.json
+          displayName: Terraform Plan
 
         - script: |
-            infracost breakdown --path Infrastructures/Dev
+            infracost breakdown --path tfplan.json
           displayName: Infracost Cost Breakdown
 
 
