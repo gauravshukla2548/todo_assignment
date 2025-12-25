@@ -51,6 +51,7 @@ stages:
             provider: 'azurerm'
             command: 'plan'
             commandOptions: '-out tfplan.binary'
+            workingDirectory: $(workdir)
             environmentServiceNameAzureRM: 'first'
         - task: TerraformTask@5
           inputs:
