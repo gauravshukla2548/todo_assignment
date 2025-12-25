@@ -46,13 +46,20 @@ stages:
             apiKey: 'ico-sj5sb7et5w5AdnGeq2oQkyfGf6ONoUpb'
             version: '0.10.x'
             pricingApiEndpoint: 'https://prices.azure.com/api/retail/prices'
-        - script: |
-            terraform init
-            workingDirectory: $(workdir)
-            terraform plan -out tfplan.binary
-            terraform show -json tfplan.binary > tfplan.json
-          displayName: Terraform Plan
-
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            commandOptions: '-out tfplan.binary'
+            environmentServiceNameAzureRM: 'first'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'show'
+            commandOptions: '-json tfplan.binary > tfplan.json'
+            outputTo: 'console'
+            outputFormat: 'default'
+            environmentServiceNameAzureRM: 'first'
         - script: |
             infracost breakdown --path tfplan.json
           displayName: Infracost Cost Breakdown
