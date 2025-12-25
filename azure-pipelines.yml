@@ -47,8 +47,12 @@ stages:
             version: '0.10.x'
             pricingApiEndpoint: 'https://prices.azure.com/api/retail/prices'
         - script: |
-            infracost breakdown --path .
-            displayName: Infracost Cost Breakdown
+            terraform init
+          displayName: Terraform Init
+
+        - script: |
+            infracost breakdown --path Infrastructures/Dev
+          displayName: Infracost Cost Breakdown
 
 
 
