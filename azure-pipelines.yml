@@ -1,3 +1,4 @@
+
 trigger: none
 
 
@@ -59,8 +60,11 @@ stages:
             targetType: 'inline'
             workingDirectory: '$(System.DefaultWorkingDirectory)'
             script: |
+
               $ErrorActionPreference = "Stop"
 
+              infracost auth login
+              
               infracost auth status
 
               infracost breakdown `
