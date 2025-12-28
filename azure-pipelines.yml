@@ -53,17 +53,11 @@ stages:
             commandOptions: '-out tfplan.binary'
             workingDirectory: $(workdir)
             environmentServiceNameAzureRM: 'first'
-        - task: TerraformTask@5
+        - task: PowerShell@2
           inputs:
-            provider: 'azurerm'
-            command: 'show'
-            commandOptions: '-json tfplan.binary > tfplan.json'
-            outputTo: 'console'
-            outputFormat: 'default'
-            environmentServiceNameAzureRM: 'first'
-        - script: |
-            infracost breakdown --path tfplan.json
-          displayName: Infracost Cost Breakdown
+           targetType: 'inline'
+           script: 'infracost breakdown --path=.'
+           workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
 
 
 
