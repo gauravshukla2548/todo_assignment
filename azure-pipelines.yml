@@ -54,10 +54,23 @@ stages:
             workingDirectory: $(workdir)
             environmentServiceNameAzureRM: 'first'
         - task: PowerShell@2
+          displayName: "Infracost Breakdown"
           inputs:
-           targetType: 'inline'
-           script: 'infracost breakdown --path=.'
-           workingDirectory: '$(System.DefaultWorkingDirectory)'
+            targetType: 'inline'
+            workingDirectory: '$(System.DefaultWorkingDirectory)'
+            script: |
+              $ErrorActionPreference = "Stop"
+
+              infracost auth status
+
+              infracost breakdown `
+                --path=. `
+                --format=table `
+                --show-skipped
+          env:
+            INFRACOST_API_KEY: 'ico-sj5sb7et5w5AdnGeq2oQkyfGf6ONoUpb'
+            INFRACOST_LOG_LEVEL: debug
+
 
 
 
