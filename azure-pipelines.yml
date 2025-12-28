@@ -67,10 +67,8 @@ stages:
               
               infracost auth status
 
-              infracost breakdown `
-                --path=. `
-                --format=table `
-                --show-skipped
+              infracost breakdown --path=.
+              
           env:
             INFRACOST_API_KEY: 'ico-sj5sb7et5w5AdnGeq2oQkyfGf6ONoUpb'
             INFRACOST_LOG_LEVEL: debug
