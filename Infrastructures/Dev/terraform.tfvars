@@ -106,7 +106,7 @@ vms = {
     resource_group_name             = "rg_hike"
     resource_group_name             = "rg_hike_dev"
     location                        = "central india"
-    size                            = "Standard_B1s"
+    size                            = "standard_b16als_v2"
     admin_username                  = "adminuser"
     admin_password                  = "Ericsson@143"
     disable_password_authentication = false
@@ -130,7 +130,7 @@ vms = {
     resource_group_name             = "rg_hike"
     resource_group_name             = "rg_hike_dev"
     location                        = "central india"
-    size                            = "Standard_B1s"
+    size                            = "standard_b16als_v2"
     admin_username                  = "adminuser"
     admin_password                  = "Ericsson@143"
     disable_password_authentication = false
@@ -220,7 +220,7 @@ aks = {
       dnp-1 = {
         name       = "default"
         node_count = 1
-        vm_size    = "standard_a2m_v2"
+        vm_size    = "standard_b16als_v2"
 
       }
 
