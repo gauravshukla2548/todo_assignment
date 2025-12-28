@@ -5,7 +5,7 @@ rg_details = {
 
   rg1 = {
     name       = "rg_hike_dev"
-    location   = "central India"
+    location   = "East US"
     managed_by = "gaurav"
     tags = {
       env = "dev"
@@ -21,7 +21,7 @@ networks = {
   Vnet1 = {
     name                = "sb_vnet"
     resource_group_name = "rg_hike_dev"
-    location            = "central India"
+    location            = "East US"
     address_space       = ["10.0.0.0/16"]
 
   }
@@ -43,7 +43,7 @@ pip = {
   pip1 = {
 
     name                = "pip_nike"
-    location            = "central india"
+    location            = "East US"
     resource_group_name = "rg_hike_dev"
     allocation_method   = "Static"
 
@@ -52,7 +52,7 @@ pip = {
   pip2 = {
 
     name                = "pip_nike-1"
-    location            = "central india"
+    location            = "East US"
     resource_group_name = "rg_hike_dev"
     allocation_method   = "Static"
 
@@ -63,7 +63,7 @@ nic = {
   nic1 = {
     name                = "nic_nike"
     resource_group_name = "rg_hike_dev"
-    location            = "central india"
+    location            = "East US"
 
     ip_configuration = {
 
@@ -82,7 +82,7 @@ nic = {
   nic2 = {
     name                = "nic_nike-1"
     resource_group_name = "rg_hike_dev"
-    location            = "central india"
+    location            = "East US"
 
     ip_configuration = {
 
@@ -105,7 +105,7 @@ vms = {
     name                            = "vne"
     resource_group_name             = "rg_hike"
     resource_group_name             = "rg_hike_dev"
-    location                        = "central india"
+    location                        = "East US"
     size                            = "standard_b16als_v2"
     admin_username                  = "adminuser"
     admin_password                  = "Ericsson@143"
@@ -129,7 +129,7 @@ vms = {
     name                            = "vne-1"
     resource_group_name             = "rg_hike"
     resource_group_name             = "rg_hike_dev"
-    location                        = "central india"
+    location                        = "East US"
     size                            = "standard_b16als_v2"
     admin_username                  = "adminuser"
     admin_password                  = "Ericsson@143"
@@ -156,7 +156,7 @@ acrs = {
   acr-1 = {
     name                = "hikeacr123876"
     resource_group_name = "rg_hike_dev"
-    location            = "central india"
+    location            = "East US"
     sku                 = "Standard"
   }
 }
@@ -166,7 +166,7 @@ datas = {
   datas-1 = {
     name                = "hike-database"
     resource_group_name = "rg_hike_dev"
-    location            = "central india"
+    location            = "East US"
     server_name         = "hike-server"
     tags = {
       evn = "prod"
@@ -181,7 +181,7 @@ sqlser = {
   sqlser-1 = {
     name                         = "hike-server"
     resource_group_name          = "rg_hike_dev"
-    location                     = "central india"
+    location                     = "East US"
     version                      = "12.0"
     administrator_login          = "devopsuseradmin"
     administrator_login_password = "pass@143"
@@ -198,7 +198,7 @@ kvs = {
   kvs-1 = {
     name                        = "hike-kvs"
     resource_group_name         = "rg_hike_dev"
-    location                    = "central india"
+    location                    = "East US"
     enabled_for_disk_encryption = false
 
     soft_delete_retention_days = 7
@@ -213,7 +213,7 @@ aks = {
   aks-1 = {
     name                = "hike-aks"
     resource_group_name = "rg_hike_dev"
-    location            = "central india"
+    location            = "East US"
     dns_prefix          = "my-aks"
 
     default_node_pool = {
